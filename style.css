@@ -1,0 +1,97 @@
+:root {
+  --bg: #e9eef2;
+  --ink: #14213d;
+  --muted: #4a5873;
+  --accent: #2f4bff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1626;
+    --ink: #eef2f7;
+    --muted: #9aa8c2;
+    --accent: #7d92ff;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 2rem clamp(1.5rem, 8vw, 8rem);
+}
+
+main { width: 100%; max-width: 46rem; }
+
+.name {
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin: 0 0 3rem;
+  max-width: 32rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.progress {
+  height: 10px;
+  max-width: 32rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  overflow: hidden;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  width: 75%;
+  border-radius: inherit;
+  background: var(--accent);
+  animation: fill 2.2s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+@keyframes fill { from { width: 0; } }
+
+.status {
+  margin: 0.75rem 0 3rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
+
+.links a {
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.links a:hover { color: var(--accent); }
+
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar { animation: none; }
+}
